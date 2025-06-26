@@ -1,9 +1,106 @@
 {{ define "projects.html" }}
-<h1 class="text-3xl font-bold mb-4">Projects</h1>
-<ul class="list-disc pl-5">
-  <li>Whaler Research</li>
-  <li>LLM Infrastructure</li>
-  <li>Portfolio Blog</li>
-</ul>
-{{ end }}
 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keith Thomson - Full Stack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></link>
+
+
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+<!-- Navbar -->
+<nav class="border-b border-gray-200 shadow-sm">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="text-xl font-bold">Keith Thomson</div>
+    <div class="space-x-6 text-sm font-medium">
+      <a href="/" class="hover:text-blue-600">Home</a>
+      <a href="/about" class="hover:text-blue-600">About</a>
+      <a href="/projects" class="hover:text-blue-600">Projects</a>
+      <a href="/blogposts" class="hover:text-blue-600">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Profile Section -->
+<main class="max-w-5xl mx-auto px-6 py-10">
+  <div class="md:flex md:space-x-10">
+    <!-- Sidebar -->
+    <aside class="md:w-1/3 text-center md:text-left mb-10 md:mb-0">
+      <img width="96" height="96" src="https://img.icons8.com/fluency/48/winner.png" alt="winner"/>
+      <h2 class="mt-4 text-xl font-semibold">Keith Thomson</h2>
+      <p class="text-sm text-gray-500">Full Stack Developer</p>
+      <p class="text-sm       text-gray-600 leading-relaxed">
+        {{ .Skills }}
+
+      <ul class="mt-4 text-sm text-gray-600 space-y-1">
+        <li>📧 thomsonk930@gmail.com</li>
+        <li>📍 Connecticut, USA</li>
+        <li>🐙 {{ .Location }} </li>
+        <li>🐙 @camelbyte</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+    <section id="projects" class="md:w-2/3">
+      <h1 class="text-3xl font-bold mb-6">My GitHub Projects</h1>
+      <div id="project-list" class="grid md:grid-cols-2 gap-6"></div>
+    </section>
+
+    <script>
+      async function loadProjects() {
+        try {
+          const resp = await fetch('https://api.github.com/users/xwhaler/repos?sort=updated');
+          const repos = await resp.json();
+          const container = document.getElementById('project-list');
+
+          repos.forEach(repo => {
+            const card = document.createElement('div');
+            card.className = 'bg-gray-100 p-6 rounded-lg shadow';
+            card.innerHTML = `
+          <h2 class="text-xl font-semibold mb-2">${repo.name}</h2>
+          <p class="text-gray-700 mb-4">${repo.description || ''}</p>
+          <a href="${repo.html_url}" target="_blank" class="inline-block text-blue-600 hover:underline">
+            View on GitHub →
+          </a>
+        `;
+            container.appendChild(card);
+          });
+        } catch (err) {
+          console.error('Failed to load repos:', err);
+          document.getElementById('project-list').innerHTML =
+                  '<p class="text-red-500">Unable to load projects right now.</p>';
+        }
+      }
+
+      loadProjects();
+    </script>
+
+    <!-- Footer -->
+
+  </div>
+
+</main>
+<div class="mt-16 pt-10 text-center border-t border-gray-200 text-sm text-gray-500">
+  <div class="flex justify-center space-x-4 mb-4">
+    <footer class="mt-16 pt-10 text-center border-t border-gray-200 text-sm text-gray-500">
+      <div class="flex justify-center space-x-4 mb-4">
+        <a href="https://github.com/camelbyte" target="_blank">GitHub</a>
+        <a href="mailto:thomsonk930@gmail.com">Email</a>
+        <a href="#">LinkedIn</a>
+      </div>
+      <p>© 2025 • Keith Thomson’s blog • Let's start coding</p>
+      <button class="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-2 rounded-full shadow">
+        ☕ Buy me a coffee
+      </button>
+    </footer>
+  </div>
+  <p>© 2025 • Keith Thomson’s blog • Let's start coding</p>
+</div>
+</body>
+</html>
+{{ end }}

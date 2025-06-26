@@ -2,14 +2,14 @@ package models
 
 type Author struct {
 	Name      string  `db:"id"`
-	Slug      string  `db:"slug"`
-	Title     string  `db:"title"`
-	Subtitle  *string `db:"subtitle"` // nullable
-	Author    string  `db:"author"`
-	Content   string  `db:"content"`
-	Tags      *string `db:"tags"`       // nullable
-	Category  *string `db:"category"`   // nullable
-	CreatedOn string  `db:"created_on"` // treated as string because MariaDB has issues
-	UpdatedOn string  `db:"updated_on"` // treated as string because MariaDB has issues
-	Published bool    `db:"published"`
+	Location  string  `db:"location"`
+	Skills    *string `db:"skills"` // nullable
+	Email     string  `db:"email"`
+	Website   *string `db:"website"`   // nullable
+	Biography *string `db:"biography"` // nullable
+	Avatar    *string `db:"avatar"`    // nullable
+	Contact   *string `db:"contact"`   // nullable
+	Links     *string `db:"links"`     // nullable
+	Image     *string `db:"image"`     // nullable
+
 }

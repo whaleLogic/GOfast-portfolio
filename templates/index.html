@@ -5,20 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Keith Thomson - Full Stack Developer</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></link>
+
+
 </head>
 <body class="bg-white text-gray-800 font-sans">
 
-  <!-- Navbar -->
-  <nav class="border-b border-gray-200 shadow-sm">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="text-xl font-bold">Keith Thomson</div>
-      <div class="space-x-6 text-sm font-medium">
-        <a href="/" class="hover:text-blue-600">Home</a>
-        <a href="/about" class="hover:text-blue-600">Projects</a>
-        <a href="/projects" class="hover:text-blue-600">Blog</a>
-      </div>
-    </div>
-  </nav>
+{{ template "header" . }}
 
   <!-- Main Profile Section -->
   <main class="max-w-5xl mx-auto px-6 py-10">
@@ -83,19 +76,7 @@
         </div>
       </section>
     </div>
-
-    <!-- Footer -->
-    <footer class="mt-16 pt-10 text-center border-t border-gray-200 text-sm text-gray-500">
-      <div class="flex justify-center space-x-4 mb-4">
-        <a href="https://github.com/camelbyte" target="_blank">GitHub</a>
-        <a href="mailto:thomsonk930@gmail.com">Email</a>
-        <a href="#">LinkedIn</a>
-      </div>
-      <p>© 2025 • Keith Thomson’s blog • Let's start coding</p>
-      <button class="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-2 rounded-full shadow">
-        ☕ Buy me a coffee
-      </button>
-    </footer>
+    {{ template "footer" . }}
   </main>
 </body>
 </html>
