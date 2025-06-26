@@ -16,7 +16,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
-	log.Printf("Exctracted %di Posts", len(posts))
+	log.Printf("Exctracted %d Posts", len(posts))
 
 	// 1️⃣ Define your template functions first...
 	funcs := template.FuncMap{
@@ -33,7 +33,7 @@ func main() {
 			"templates/about.html",
 			"templates/projects.html",
 			"templates/post.html",
-			"templates/blogposts.html",
+			"templates/blog.html",
 			"templates/header.html",
 			"templates/footer.html",
 		),
@@ -45,7 +45,7 @@ func main() {
 	r.GET("/", handlers.HomeHandler)
 	r.GET("/about", handlers.AboutHandler)
 	r.GET("/projects", handlers.ProjectsHandler)
-	r.GET("/blogposts", handlers.BlogPostsHandler)
+	r.GET("/blog", handlers.BlogPostsHandler)
 	r.GET("/post/:slug", handlers.PostHandler)
 	log.Println("Starting server on http://localhost:8080")
 	log.Fatal(r.Run(":8080"))

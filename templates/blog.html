@@ -1,0 +1,38 @@
+{{ define "blog.html" }}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog — KT Dev Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+{{ template "header.html" . }}
+
+<!-- Main Content -->
+<main class="max-w-5xl mx-auto px-4 py-10">
+  <h1 class="text-2xl font-bold mb-4">Blog Posts</h1>
+
+  {{ if .Posts }}
+  {{ range .Posts }}
+  <article class="mb-8">
+    <h2 class="text-xl font-semibold">{{ .Title }}</h2>
+    <p class="text-gray-700">{{ .Content }}</p>
+    <a href="/post/{{ .Post }}" class="text-blue-600 hover:underline">Read more →</a>
+  </article>
+  {{ end }}
+  {{ else }}
+  <p class="text-gray-500">No posts found.</p>
+  {{ end }}
+</main>
+
+{{ template "footer.html" . }}
+
+</body>
+</html>
+{{ end }}
