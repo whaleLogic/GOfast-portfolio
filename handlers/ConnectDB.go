@@ -7,7 +7,7 @@ import (
 )
 
 	func ConnectDB() ([]models.Post, error) {
-		dsn := "root:Sophia@tcp(127.0.0.1:3306)/content"
+		dsn := "root:[DB_PASS]@tcp(127.0.0.1:3306)/[DB_NAME]"
         db, err := sql.Open("mysql", dsn)
         if err != nil {
                 return nil, fmt.Errorf("failed to open DB: %w", err)
