@@ -8,7 +8,7 @@ import (
 func AboutHandler(c *gin.Context) {
 	c.HTML(http.StatusOK, "about.html", gin.H{
 		"Title":    "About",
-		"Author":   "Keith Thomson",
+		"Author":   "Keith",
 		"Location": "Connecticut, USA",
 		"Skills":   "Python, Golang, SQL, Cloud, Docker",
 	})
